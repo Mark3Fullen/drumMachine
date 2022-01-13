@@ -1,5 +1,27 @@
 import './App.css';
 
+const libOne = document.getElementById('Lib1')
+const libTwo = document.getElementById('Lib2')
+const libThree = document.getElementById('Lib3')
+const beatName = document.getElementById('beat-name')
+const padContainer = document.getElementById('pad-container')
+
+function sound(src) {
+  this.sound = document.createElement('audio')
+  this.sound.src = src
+  this.sound.setAttribute('preload', 'auto')
+  this.sound.setAttribute('controls', 'none')
+  this.sound.classList.add('clip')
+  this.sound.style.display = 'none'
+  document.body.appendChild(this.sound)
+  this.play = function() {
+    this.sound.play()
+  }
+  this.stop = function() {
+    this.sound.pause()
+  }
+}
+
 function App() {
   return (
     <div className="container">
