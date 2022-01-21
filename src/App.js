@@ -1,27 +1,51 @@
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
-let bpm = 100
-let notes = 16
-let rows = 5
+const snareSound = "https://freewavesamples.com/files/Ensoniq-ESQ-1-Snare.wav"
 
-const calculateBPM = () => {
-  return Math.round( ( (44100/60) / (bpm/notes) ) / notes )
-}
+const useAudio = url => {
+  const [audio] = useState(new Audio(url));
+  const [playing, setPlaying] = useState(false);
+
+  const toggle = () => setPlaying(!playing);
+
+  useEffect(() => {
+
+      playing ? audio.play() && console.log("Bruh") : audio.pause();
+
+    },
+    [playing]
+  );
+
+  useEffect(() => {
+    audio.addEventListener('ended', () => setPlaying(false));
+    return () => {
+      audio.removeEventListener('ended', () => setPlaying(false));
+    };
+  }, []);
+
+  return [playing, toggle];
+};
+
+const Player = ({ url }) => {
+  const [playing, toggle] = useAudio(url);
+
+  return (
+    <div>
+      <button onClick={toggle}>{playing ? "Pause" : "Play"}</button>
+    </div>
+  );
+};  
 
 function App() {
   return (
     <div className="container">
       <header>
-        <button id="play-pause" data-playing="false">
-          <i className="fa fa-play"></i>
-        </button>
+        DruMachine 1.0!
       </header>
-      <div className="container player"></div>
-      <audio id="1"></audio>
-      <audio id="2"></audio>
-      <audio id="3"></audio>
-      <audio id="4"></audio>
-      <audio id="5"></audio>
+      <div className="container-player">
+        {Player(snareSound)}
+      </div>
     </div>
   );
 }
