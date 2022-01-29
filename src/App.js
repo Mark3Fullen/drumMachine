@@ -36,8 +36,8 @@ class App extends React.Component {
       Q: "Loop 1",
       W: "Loop 2",
       E: "Loop 3",
-      A: "",
-      S: "",
+      A: "Kick",
+      S: "Snare",
       D: "",
       Z: "",
       X: "",
@@ -72,31 +72,20 @@ class App extends React.Component {
     }
   }
 
-  handleMouseUp(event) {
-    this.setState({
-      Q: false,
-      W: false,
-      E: false,
-      A: false,
-      S: false,
-      D: false,
-      Z: false,
-      X: false,
-      C: false
-    })
-  }
-
   handleKeyPress(event) {
+    let letter = event.key.toUpperCase();
     if (this.state.power) {
-      const keyTest = /[QWEASDZXC]/.test(event.key);
+      const keyTest = /[QWEASDZXC]/.test(letter);
       if (keyTest) {
+        console.log("Bruh")
         this.setState({
-          input: this.drumKey[event.key],
-          [event.key]: true
+          input: this.drumKey[letter],
+          [letter]: true
         });
-        document.getElementById(event.key).pause();
-        document.getElementById(event.key).currentTime = 0;
-        document.getElementById(event.key).play();
+        document.getElementById(letter).volume = this.state.volume;
+        document.getElementById(letter).pause();
+        document.getElementById(letter).currentTime = .1;
+        document.getElementById(letter).play();
       }
     }
   }
@@ -126,6 +115,20 @@ class App extends React.Component {
       X: false,
       C: false
     });
+  }
+
+  handleMouseUp(event) {
+    this.setState({
+      Q: false,
+      W: false,
+      E: false,
+      A: false,
+      S: false,
+      D: false,
+      Z: false,
+      X: false,
+      C: false
+    })
   }
 
   render() {
