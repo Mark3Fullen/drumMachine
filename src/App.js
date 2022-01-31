@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import loop1 from "./soundPack/Loop1.wav";
-import loop2 from "./soundPack/Loop2.wav";
-import loop3 from "./soundPack/Loop3.wav";
-import snare from "./soundPack/Snare.wav";
-import kick from "./soundPack/Kick.wav";
+import loop1 from "./soundPack/loop1.wav";
+import loop2 from "./soundPack/loop2.wav";
+import loop3 from "./soundPack/loop3.wav";
+import snare from "./soundPack/snare.wav";
+import kick from "./soundPack/kick.wav";
+import hihatClosed from "./soundPack/hihatClosed.wav";
+import hihatOpen from "./soundPack/hihatOpen.wav";
+import zap from "./soundPack/zap.wav";
+import mario from "./soundPack/mario.wav";
 
 class App extends React.Component {
   constructor(props) {
@@ -38,10 +42,10 @@ class App extends React.Component {
       E: "Loop 3",
       A: "Kick",
       S: "Snare",
-      D: "",
-      Z: "",
-      X: "",
-      C: ""
+      D: "Mario",
+      Z: "Zap",
+      X: "Open Hihat",
+      C: "Closed Hihat"
     }
   }
 
@@ -63,7 +67,7 @@ class App extends React.Component {
       });
       document.getElementById(key).volume = this.state.volume;
       document.getElementById(key).pause();
-      document.getElementById(key).currentTime = 0;
+      document.getElementById(key).currentTime = 0.05;
       document.getElementById(key).play();
     } else {
       this.setState({
@@ -84,7 +88,7 @@ class App extends React.Component {
         });
         document.getElementById(letter).volume = this.state.volume;
         document.getElementById(letter).pause();
-        document.getElementById(letter).currentTime = .1;
+        document.getElementById(letter).currentTime = 0.05;
         document.getElementById(letter).play();
       }
     }
@@ -135,7 +139,7 @@ class App extends React.Component {
     return (
 
       <div className="App" id="drum-machine">
-
+        <p> <b>Drum Pad App</b> </p>
         <div className="header">
           <button type="button" className="power-btn" onClick={this.togglePower} style={this.state.power ? {backgroundColor: "#2ec4b6"} : {backgroundColor: "#ff3366"}}>
             {this.state.power ? "ON" : "OFF"}
@@ -165,6 +169,22 @@ class App extends React.Component {
           <div className={"drum-pad active-" + this.state.S} onMouseDown={() => {this.handleMouseDown("S")}} onMouseUp={this.handleMouseUp} id="dp-S">
             S
             <audio src={snare} className="snare" id="S" preload="auto" volume={this.state.volume}/>
+          </div>
+          <div className={"drum-pad active-" + this.state.D} onMouseDown={() => {this.handleMouseDown("D")}} onMouseUp={this.handleMouseUp} id="dp-D">
+            D
+            <audio src={mario} className="snare" id="D" preload="auto" volume={this.state.volume}/>
+          </div>
+          <div className={"drum-pad active-" + this.state.Z} onMouseDown={() => {this.handleMouseDown("Z")}} onMouseUp={this.handleMouseUp} id="dp-Z">
+            Z
+            <audio src={zap} className="snare" id="Z" preload="auto" volume={this.state.volume}/>
+          </div>
+          <div className={"drum-pad active-" + this.state.X} onMouseDown={() => {this.handleMouseDown("X")}} onMouseUp={this.handleMouseUp} id="dp-X">
+            X
+            <audio src={hihatOpen} className="snare" id="X" preload="auto" volume={this.state.volume}/>
+          </div>
+          <div className={"drum-pad active-" + this.state.C} onMouseDown={() => {this.handleMouseDown("C")}} onMouseUp={this.handleMouseUp} id="dp-C">
+            C
+            <audio src={hihatClosed} className="snare" id="C" preload="auto" volume={this.state.volume}/>
           </div>
         </div>
 
