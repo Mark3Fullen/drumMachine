@@ -1,13 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.9984c5c2.css",
-    "main.js": "/static/js/main.ad707550.js",
+    "main.css": "/static/css/main.aacac90c.css",
+    "main.js": "/static/js/main.a7f9da67.js",
+    "static/media/loop3.wav": "/static/media/loop3.7e9abb71e1c6143ab39d.wav",
+    "static/media/loop2.wav": "/static/media/loop2.20bb24808ff94c458b4c.wav",
+    "static/media/loop1.wav": "/static/media/loop1.f52d097a7a22ce1f2139.wav",
+    "static/media/mario.wav": "/static/media/mario.b9d3358257ea35de1bc5.wav",
+    "static/media/hihatClosed.wav": "/static/media/hihatClosed.7595e46b3d0e3b42fdb9.wav",
+    "static/media/hihatOpen.wav": "/static/media/hihatOpen.a3b7e7d8a856d2d804e5.wav",
+    "static/media/kick.wav": "/static/media/kick.549a4e4eb3f3f81f8aa1.wav",
+    "static/media/snare.wav": "/static/media/snare.951ae7fd4f0f927bdbe8.wav",
+    "static/media/zap.wav": "/static/media/zap.67a2eabc1f6fcf69f225.wav",
     "index.html": "/index.html",
-    "main.9984c5c2.css.map": "/static/css/main.9984c5c2.css.map",
-    "main.ad707550.js.map": "/static/js/main.ad707550.js.map"
+    "main.aacac90c.css.map": "/static/css/main.aacac90c.css.map",
+    "main.a7f9da67.js.map": "/static/js/main.a7f9da67.js.map"
   },
   "entrypoints": [
-    "static/css/main.9984c5c2.css",
-    "static/js/main.ad707550.js"
+    "static/css/main.aacac90c.css",
+    "static/js/main.a7f9da67.js"
   ]
 }

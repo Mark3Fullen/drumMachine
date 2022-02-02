@@ -81,7 +81,6 @@ class App extends React.Component {
     if (this.state.power) {
       const keyTest = /[QWEASDZXC]/.test(letter);
       if (keyTest) {
-        console.log("Bruh")
         this.setState({
           input: this.drumKey[letter],
           [letter]: true
@@ -99,6 +98,15 @@ class App extends React.Component {
       power: !this.state.power,
       input: this.state.power ? "Power is OFF" : "Power is ON"
     });
+
+    Object.keys(this.drumKey).forEach(o => {
+      o = o.toUpperCase();
+      const keyTest = /[QWEASDZXC]/.test(o)
+      if (keyTest && this.state.power) {
+        document.getElementById(o).pause();
+        document.getElementById(o).currentTime = 0.05;
+      }
+    })
   }
 
   handleSlide(event) {
